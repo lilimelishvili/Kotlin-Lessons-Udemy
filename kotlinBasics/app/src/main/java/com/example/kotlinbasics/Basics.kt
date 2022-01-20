@@ -29,3 +29,4 @@ fun main(){
     var isGood : Boolean = true
     var firstCharacter : Char = 'a'
 }
+//this is This is one example of how the solution could look like
