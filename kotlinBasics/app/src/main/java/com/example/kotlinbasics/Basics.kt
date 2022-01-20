@@ -1,6 +1,6 @@
 package com.example.kotlinbasics
 
 fun main () {
-    var myName = "Lili"
-    print ("Hello " + myName)
+    var myName = "Lily"
+    print ("Hello  " + myName)
 }
