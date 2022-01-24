@@ -1,28 +1,45 @@
 package com.example.kotlinbasics
 
 fun main () {
-    /**
-    var x : Any = 13.37
-    when(x) {
-    is Int -> println("$x is an Int")
-    !is Double -> println("$x is not Double")
-    is String -> println("$x is a String")
-    else -> println("$x is none of the above")
+     var  x  = 100
+    while (x >= 0 ){
+        print("$x")
+        x -= 2
     }
-     **/
+        println("\n while loop is done")
 
-    val x : Any = 13.37
-//assign when to a variable
-    val result =  when(x) {
-//let condition for each block be only a string
-        is Int -> "is an Int"
-        !is Double -> "is not Double"
-        is String -> "is a String"
-        else -> "is none of the above"
+     x = 1
+     do{
+         println("$x")
+        x++
+     }while (x <= 10)
+    println("\ndo while loop is done")
+
+    var feltTemp = "cold"
+    var roomTemp = 10
+    while (feltTemp == "cold"){
+        roomTemp ++
+        if (roomTemp >= 20){
+            feltTemp = "compy"
+            println("It's compy now")
+        }
     }
-//then print x with the result
-    print("$x $result")
+     for (num in 1..10) {
+        print("$num") }
+    for (i in 1 until 10){ // Same as - for (i in 1.until(10))
+        print("$i ")
     }
+     println("____________")
+    for (i in 10 downTo  1 step 2){// Same as - for (i in 10 downTo(1).step(2))
+        print("$i ")
+    }
+
+
+
+
+
+}
+
 
 
 
