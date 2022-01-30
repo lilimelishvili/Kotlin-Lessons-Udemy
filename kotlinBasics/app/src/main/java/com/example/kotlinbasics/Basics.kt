@@ -1,18 +1,13 @@
 package com.example.kotlinbasics
 
-fun main() {
-    //Creating instances of classes
-  var denis = Person("Lily", "Ime")
-    var Gio = Person ()
-    var GioEpita = Person (lastName = "Epita")
+fun main(){
+    val iphone = MobilePhone("iOS", "Apple", "iPhone 12")
+    val galaxyS20 = MobilePhone("Android","Samsung", "Galaxy S20")
+    val mateXS = MobilePhone("Android", "Huawei", "Mate X S")
 }
 
-class Person(firstName: String = "Gio", lastName: String = "Epo" ){
-
-
-    //initializer Block
+class MobilePhone(osName: String, brand: String, model: String){
     init {
-        println("Initialized a new Person object with " +
-                "firstName = $firstName, lastName = $lastName")
+        println("The phone $model from $brand uses $osName as its Operating System")
     }
 }
