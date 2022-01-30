@@ -1,4 +1,4 @@
 package com.example.kotlinbasics
 
-class MainActivity {
+class MainActivity{
 }
