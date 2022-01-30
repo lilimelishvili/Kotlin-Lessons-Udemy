@@ -1,44 +1,32 @@
 package com.example.kotlinbasics
 
+import kotlin.system.measureTimeMillis
+
 fun main() {
-    //Creating instances of classes
-  var denis = Person("Lily", "Ime", 31)
-    denis.hobby = "tu skateboard"
-    denis.age = 32
-    println("Lily is ${denis.age} years old" )
-    denis.stateHobby()
-    var Gio = Person ()
-    Gio.hobby = "play video games"
-    Gio.stateHobby()
-   // var GioEpita = Person (lastName = "Epita")
-}
+    var myCar = Car()
+    println ("brand is : ${myCar.myBrand}")
+    myCar.maxSpeed = 200
+    println("Maxspeed is ${myCar.maxSpeed}")
+    println( " My car model is ${myCar.myModel}")
+        }
 
-class Person(firstName: String = "Gio", lastName: String = "Epo" ){
-     // Member Variable - Properties
-    var age : Int? = null
-    var hobby : String = "Watch Netflix"
-    var firstName : String? = null
+class Car (){
+   lateinit var owner : String
+   val myBrand: String = "BMW"
+       // custom getter
+    get() {
+        return field.toLowerCase()
+    }
+    var maxSpeed: Int = 250
+    get() = field
+    set(value) {
+        field = if(value > 0) value else  throw IllegalArgumentException("Maxspeed cannot be less than ")
+    }
+    var myModel : String = "M5"
+    private set
 
-    //initializer Block
     init {
-        this.firstName = firstName
-        println("Initialized a new Person object with " +
-                "firstName = $firstName, lastName = $lastName")
-
-    }
-
-    // Member seconary Constructor
-
-    constructor(firstName: String, lastName: String, age: Int): this(firstName, lastName){
-        this.age = age
-    }
-
-
-
-    // Member functins - Methods
-    fun stateHobby(){
-        println("$firstName\'s  hobby is $hobby")
-    }
-
-
+        this.myModel = "M3"
+       this.owner = "Frank"
+   }
 }
