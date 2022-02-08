@@ -1,65 +1,41 @@
 package com.example.kotlinbasics
 
-// An abstract class cannot be instantiated
-// (you cannot create objects of an abstract class).
-// However, you can inherit subclasses from can them.
-// The members (properties and methods) of an abstract class are non-abstract
-// unless you explicitly use the abstract keyword to make them abstract.
-abstract class Mammal(val name: String, val origin: String,
-                      val weight: Double) {   // Concrete (Non Abstract) Properties
+fun main(){
+    val stringList: List<String> = listOf(
+        "Denis", "Frank", "Garry"    )
+    val mixedTypeList: List<Any> = listOf(
+        "Denis", 31, 5, "Bday", 70.5, "weight", "kg")
+     for(value in mixedTypeList) {
+         if (value is Int) {
+             println("Integer: '$value'")
+         }else if (value is Double) {
+             println("Double: '$value' with Floor value ${
+                 Math.floor(value)}")
+         }else if (value is String){
+             println("String: '$value' of length ${value.length}")
+         }else{
+             println("Unknown Type")
+         }
+     }
+     }
+// smart cast
 
-    // Abstract Property (Must be overridden by Subclasses)
-    abstract var maxSpeed: Double
+private val Any.length: String
+    get() {
+        val obj1: Any = "I have a dream"
+        if (obj1 !is String) {
+            println("Not  a  String")
+        } else {
+            println("Found a String of length ${obj1.length}")
+        }
+// "as" keyword
+val str1: String = obj1 as String
+        println(str1.length)
+        val obj2: Any = 1337
+        val str2: String = obj2 as String
+        println(str2)
 
-    // Abstract Methods (Must be implemented by Subclasses)
-    abstract fun run()
-    abstract fun breath()
-
-    // Concrete (Non Abstract) Method
-    fun displayDetails() {
-        println("Name: $name, Origin: $origin, Weight: $weight, " +
-                "Max Speed: $maxSpeed")
-    }
-}
-
-class Human(name: String, origin: String, weight: Double,
-            override var maxSpeed: Double): Mammal(name, origin, weight) {
-
-    override fun run() {
-        // Code to run
-        println("Runs on two legs")
-    }
-
-    override fun breath() {
-        // Code to breath
-        println("Breath through mouth or nose")
-    }
-}
-
-class Elephant(name: String, origin: String, weight: Double,
-               override var maxSpeed: Double): Mammal(name, origin, weight) {
-
-    override fun run() {
-        // Code to run
-        println("Runs on four legs")
-    }
-
-    override fun breath() {
-        // Code to breath
-        println("Breath through the trunk")
-    }
-}
-
-fun main() {
-    val human = Human("Denis", "Russia",
-        70.0, 28.0)
-    val elephant = Elephant("Rosy", "India",
-        5400.0, 25.0)
-
-    human.run()
-    elephant.run()
-
-    human.breath()
-    elephant.breath()
-
-}
+        // "as?" kayword
+        val obj3: Any = 1337
+        val str3: String? = (obj3 as? String)
+            println(str3)
