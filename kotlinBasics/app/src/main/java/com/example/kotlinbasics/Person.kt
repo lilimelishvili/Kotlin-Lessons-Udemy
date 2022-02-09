@@ -1,41 +1,23 @@
 package com.example.kotlinbasics
 
-fun main(){
-    val stringList: List<String> = listOf(
-        "Denis", "Frank", "Garry"    )
-    val mixedTypeList: List<Any> = listOf(
-        "Denis", 31, 5, "Bday", 70.5, "weight", "kg")
-     for(value in mixedTypeList) {
-         if (value is Int) {
-             println("Integer: '$value'")
-         }else if (value is Double) {
-             println("Double: '$value' with Floor value ${
-                 Math.floor(value)}")
-         }else if (value is String){
-             println("String: '$value' of length ${value.length}")
-         }else{
-             println("Unknown Type")
-         }
-     }
-     }
-// smart cast
+fun main() {
+//val nymbers:IntArray = IntArray(1,2,3,4,5,6,)
+    //   val numbers = intArrayOf(1,2,3,4,5,6,)
+    val numbers = arrayOf(1, 2, 3, 4, 5, 6,)
+    // print(numbers.contentToString())
+    val numbersD:DoubleArray = doubleArrayOf(1.0,2.0,3.0,4.0,5.0,6.0)
+    print("initial value ${numbers.contentToString()}")
+    numbers[0] = 6
+    numbers[1] = 5
+    numbers[4] = 2
+    numbers[5] = 1
+    print("\nfinal value ${numbers.contentToString()}")
+    val days = arrayOf("Sun","Mon", "tues", "Wed", "thurs","Fri","Sat")
+    print(days.contentToString())
+  val fruits = arrayOf(Fruit(name = "Apple", price = "2.5"), Fruit(name = "Grape", price = "2.1"  ))
+for (index in fruits.indices){
+    print("${fruits[index].name} is in index $index")
+}
+}
+data class Fruit(val name:String, val price: String)
 
-private val Any.length: String
-    get() {
-        val obj1: Any = "I have a dream"
-        if (obj1 !is String) {
-            println("Not  a  String")
-        } else {
-            println("Found a String of length ${obj1.length}")
-        }
-// "as" keyword
-val str1: String = obj1 as String
-        println(str1.length)
-        val obj2: Any = 1337
-        val str2: String = obj2 as String
-        println(str2)
-
-        // "as?" kayword
-        val obj3: Any = 1337
-        val str3: String? = (obj3 as? String)
-            println(str3)
