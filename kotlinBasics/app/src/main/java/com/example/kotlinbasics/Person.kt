@@ -1,27 +1,16 @@
 package com.example.kotlinbasics
 
-open class Outer {
-    private val a = 1
-    protected open val b = 2
-    internal open val c = 3
-    val d = 4  // public by default
+class OuterClass {
+    //outerclass code
+    private var name: String = "MR X"
 
-    protected class Nested {
-        public val e: Int = 5
+    class NestedClass {
+        //nestedclass code
+        var descrption: String = "code inside nested class"
+        private var id: Int = 101
+        fun foo() {
+            //pint("name is ${name}") //cannot access the outer class member
+            println("Id is ${id}")
+        }
     }
-}
-
-class Subclass : Outer() {
-    // a is not visible
-    // b, c and d are visible
-    // Nested and e are visible
-
-    override val b = 5   // 'b' is protected
-    override val c = 7   // 'c' is internal
-}
-
-class Unrelated(o: Outer) {
-    // o.a, o.b are not visible
-    // o.c and o.d are visible (same module)
-    // Outer.Nested is not visible, and Nested::e is not visible either
 }
