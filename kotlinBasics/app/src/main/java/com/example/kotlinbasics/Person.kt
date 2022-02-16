@@ -1,25 +1,27 @@
 package com.example.kotlinbasics
 
-fun main (){
-val items = listOf(1, 2, 3, 4, 5)
+open class Outer {
+    private val a = 1
+    protected open val b = 2
+    internal open val c = 3
+    val d = 4  // public by default
 
-// Lambdas are code blocks enclosed in curly braces.
-items.fold(0, {
-    // When a lambda has parameters, they go first, followed by '->'
-    acc: Int, i: Int ->
-    print("acc = $acc, i = $i, ")
-    val result = acc + i
-    println("result = $result")
-    // The last expression in a lambda is considered the return value:
-    result
-})
+    protected class Nested {
+        public val e: Int = 5
+    }
+}
 
-// Parameter types in a lambda are optional if they can be inferred:
-val joinedToString = items.fold("Elements:", { acc, i -> acc + " " + i })
+class Subclass : Outer() {
+    // a is not visible
+    // b, c and d are visible
+    // Nested and e are visible
 
-// Function references can also be used for higher-order function calls:
-val product = items.fold(1, Int::times)
+    override val b = 5   // 'b' is protected
+    override val c = 7   // 'c' is internal
+}
 
-println("joinedToString = $joinedToString")
-println("product = $product")
+class Unrelated(o: Outer) {
+    // o.a, o.b are not visible
+    // o.c and o.d are visible (same module)
+    // Outer.Nested is not visible, and Nested::e is not visible either
 }
